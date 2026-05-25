@@ -1,65 +1,69 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-Data%20Analysis-blue?style=for-the-badge&logo=python" alt="Python badge">
+  <img src="https://img.shields.io/badge/RDKit-Cheminformatics-green?style=for-the-badge" alt="RDKit badge">
+  <img src="https://img.shields.io/badge/Data%20Source-COCONUT-orange?style=for-the-badge" alt="COCONUT badge">
+</p>
 
-# COCONUT Natural Products Property Analysis
+# Natural Products Database Analysis
 
-A cheminformatics project using Python and RDKit to analyze a 2,000-compound subset of the COCONUT natural products database and profile molecular properties relevant to early-stage drug discovery.
+A cheminformatics and data-analysis project using a curated subset of natural products from the COCONUT database. This workflow uses RDKit to parse molecular structures, compute medicinal chemistry–relevant descriptors, and visualize chemical property distributions across a 2,000-compound natural-products dataset.
 
-## Project Relevance
+## Executive Summary
 
-Natural products remain an important source of biologically active scaffolds and lead compounds in drug discovery. This project was designed to explore how computational chemistry methods can be used to characterize natural product chemical space through descriptors linked to medicinal chemistry decision-making, including molecular size, polarity, lipophilicity, hydrogen-bonding capacity, and molecular flexibility.
+This project was designed to profile the physicochemical space of natural products using a reproducible Python workflow. A subset of 2,000 compounds was sampled from the COCONUT collection, successfully parsed with RDKit, and analyzed using descriptors relevant to molecular property profiling and early-stage drug discovery.
 
-## Objective
+The project demonstrates practical skills in molecular data handling, cheminformatics, descriptor generation, and scientific visualization. It also provides a foundation for downstream workflows such as compound prioritization, clustering, similarity analysis, or lead-like subset selection.
 
-The objective of this project was to build a reproducible workflow for:
+## Key Outcomes
 
-- loading and organizing natural product data,
-- parsing molecular structures from SMILES strings,
-- calculating medicinal chemistry-relevant descriptors with RDKit,
-- generating clean datasets for downstream analysis,
-- and visualizing trends across a natural product subset.
+- Built a reproducible RDKit workflow for natural-product descriptor analysis.
+- Parsed and analyzed 2,000 natural-product structures with no failed molecules.
+- Computed molecular weight, LogP, TPSA, hydrogen-bond counts, and rotatable bond counts.
+- Generated publication-style visual summaries of descriptor distributions and relationships.
+- Organized outputs into a clean GitHub-ready project structure.
 
-## Dataset
+## Scientific Context
 
-- **Source:** COCONUT (Collection of Open Natural Products)
-- **Input file:** `coconut_csv_lite-05-2026.csv`
-- **Working subset:** 2,000 randomly sampled compounds
-- **Structure field used:** `canonical_smiles`
+Natural products are a rich source of structurally diverse bioactive molecules and remain highly relevant to drug discovery. However, their chemical diversity also makes it important to understand how they are distributed across key physicochemical properties associated with permeability, polarity, lipophilicity, and molecular flexibility.
 
-## Methods
+This project focuses on property profiling rather than bioactivity prediction. By characterizing the descriptor space of a natural-products subset, the workflow helps support later decisions about filtering, prioritization, and medicinal chemistry relevance.
 
-The analysis was performed in Python using pandas, RDKit, matplotlib, and seaborn.
+## Data Source
 
-### Workflow
+The dataset used in this project was derived from the **COCONUT** database (Collection of Open Natural Products), an open resource for natural-product structures. A 2,000-compound subset was used for descriptor analysis and visualization.
 
-1. Loaded the COCONUT lite CSV into a pandas DataFrame.
-2. Randomly sampled 2,000 compounds from the full dataset.
-3. Parsed the `canonical_smiles` column into RDKit molecule objects.
-4. Calculated the following descriptors for each valid molecule:
-   - Molecular weight
-   - LogP
-   - Topological polar surface area (TPSA)
-   - Hydrogen-bond donors
-   - Hydrogen-bond acceptors
-   - Rotatable bonds
-5. Combined RDKit descriptors with selected COCONUT property fields.
-6. Saved cleaned output tables and figure files for reuse and downstream interpretation.
+## Descriptors Calculated
 
-## Key Results
+The workflow computed the following RDKit-derived properties:
 
-- Successfully parsed **2,000 / 2,000** sampled SMILES strings.
-- Built a descriptor-ready dataset for property-based profiling of natural products.
-- Generated visualizations showing molecular weight and LogP distributions across the subset.
-- Explored descriptor relationships using a correlation heatmap and MW vs LogP scatterplot.
+- Molecular weight
+- LogP
+- Topological polar surface area (TPSA)
+- Hydrogen bond donors
+- Hydrogen bond acceptors
+- Rotatable bonds
 
-## Drug Discovery Context
+These descriptors were selected because they are commonly used to characterize physicochemical behavior and assess molecular property trends relevant to drug discovery.
 
-This workflow demonstrates a foundational step in compound prioritization: translating chemical structure into interpretable physicochemical descriptors. Descriptor-based profiling can help identify compounds with properties that may influence permeability, solubility, flexibility, and overall drug-likeness during early-stage screening.
+## Results
+
+### Project Summary
+
+| Metric | Value |
+|---|---:|
+| Natural products analyzed | 2000 |
+| Valid molecules parsed by RDKit | 2000 |
+| Descriptor categories computed | 6 |
+| Output figures generated | 4 |
+
+The complete parsing success across all 2,000 sampled compounds supports the reliability of the workflow and produced a clean dataset for downstream visualization and analysis.
 
 ## Repository Structure
 
 ```text
 natural-products-db/
-├── coconut_natural_products_analysis.ipynb
 ├── README.md
+├── coconut_natural_products_analysis.ipynb
 └── data/
     ├── processed/
     │   ├── coconut_subset_cleaned.csv
@@ -71,47 +75,47 @@ natural-products-db/
         └── descriptor_heatmap.png
 ```
 
-## Visualizations
+## Visual Outputs
 
-### Molecular Weight Distribution
-![Molecular weight distribution](data/results/molwt_hist.png)
+### Molecular weight distribution
 
-### LogP Distribution
-![LogP distribution](data/results/logp_hist.png)
+![Molecular weight histogram](data/results/molwt_hist.png)
 
-### MW vs LogP Scatterplot
-![MW vs LogP scatterplot](data/results/mw_vs_logp.png)
+### LogP distribution
 
-### Descriptor Correlation Heatmap
-![Descriptor correlation heatmap](data/results/descriptor_heatmap.png)
+![LogP histogram](data/results/logp_hist.png)
+
+### Molecular weight vs LogP
+
+![MW vs LogP scatter plot](data/results/mw_vs_logp.png)
+
+### Descriptor correlation heatmap
+
+![Descriptor heatmap](data/results/descriptor_heatmap.png)
 
 ## Technical Skills Demonstrated
 
-- Cheminformatics data processing
-- SMILES parsing and molecule validation
-- Molecular descriptor calculation with RDKit
-- Scientific plotting and exploratory data analysis
-- Reproducible project organization
-- Interpretation of physicochemical properties in a medicinal chemistry context
+- Python data analysis with pandas
+- Molecular structure parsing with RDKit
+- Descriptor-based property profiling
+- Scientific visualization with matplotlib and seaborn
+- Reproducible workflow organization for computational chemistry projects
 
-## Tools Used
+## Limitations
 
-- Python
-- pandas
-- RDKit
-- matplotlib
-- seaborn
-- Jupyter Notebook
+This project focuses on descriptor profiling and does not include biological activity data, experimental validation, or predictive modeling. While descriptor analysis is useful for understanding chemical space, it should be interpreted as a first-step profiling approach rather than a direct measure of pharmacological potential.
 
-## Future Directions
+## Future Extensions
 
-Potential extensions of this project include:
+Potential next steps include:
 
-- applying simple drug-likeness or lead-likeness filters,
-- comparing descriptor profiles across natural product classes,
-- analyzing scaffold diversity,
-- and integrating similarity search or clustering methods.
+- identifying lead-like or drug-like subsets
+- clustering compounds by descriptor similarity
+- integrating structural fingerprints
+- adding similarity search functionality
+- combining descriptor profiling with downstream ADME or screening workflows
 
-## Portfolio Summary
+## Author
 
-This project demonstrates an interest in natural product-based drug discovery and the use of computational chemistry tools to evaluate molecular properties relevant to medicinal chemistry.
+**Ava Richards**  
+Biochemistry graduate interested in medicinal chemistry, natural-product drug discovery, and computational analysis.
