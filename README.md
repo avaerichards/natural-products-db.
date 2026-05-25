@@ -118,4 +118,4 @@ Potential next steps include:
 ## Author
 
 **Ava Richards**  
-Biochemistry graduate interested in medicinal chemistry, natural-product drug discovery, and computational analysis.
+Biomedical Science graduate interested in medicinal chemistry, natural-product drug discovery, and computational analysis.
