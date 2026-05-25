@@ -1,88 +1,117 @@
 
+# COCONUT Natural Products Property Analysis
 
-\# COCONUT Natural Products Property Analysis
+A cheminformatics project using Python and RDKit to analyze a 2,000-compound subset of the COCONUT natural products database and profile molecular properties relevant to early-stage drug discovery.
 
+## Project Relevance
 
+Natural products remain an important source of biologically active scaffolds and lead compounds in drug discovery. This project was designed to explore how computational chemistry methods can be used to characterize natural product chemical space through descriptors linked to medicinal chemistry decision-making, including molecular size, polarity, lipophilicity, hydrogen-bonding capacity, and molecular flexibility.
 
-This project builds a small local database of natural products from the COCONUT collection and profiles their molecular properties using RDKit descriptors. \[web:36]\[web:38]\[web:40]
+## Objective
 
+The objective of this project was to build a reproducible workflow for:
 
+- loading and organizing natural product data,
+- parsing molecular structures from SMILES strings,
+- calculating medicinal chemistry-relevant descriptors with RDKit,
+- generating clean datasets for downstream analysis,
+- and visualizing trends across a natural product subset.
 
-\## Data
+## Dataset
 
+- **Source:** COCONUT (Collection of Open Natural Products)
+- **Input file:** `coconut_csv_lite-05-2026.csv`
+- **Working subset:** 2,000 randomly sampled compounds
+- **Structure field used:** `canonical_smiles`
 
+## Methods
 
-\- Source: COCONUT lite CSV (May 2026 release). \[web:34]\[web:36]  
+The analysis was performed in Python using pandas, RDKit, matplotlib, and seaborn.
 
-\- Sample: 2,000 randomly selected compounds from the full COCONUT dataset. \[cite:23]  
+### Workflow
 
-\- Structure field used: `canonical\_smiles`.
+1. Loaded the COCONUT lite CSV into a pandas DataFrame.
+2. Randomly sampled 2,000 compounds from the full dataset.
+3. Parsed the `canonical_smiles` column into RDKit molecule objects.
+4. Calculated the following descriptors for each valid molecule:
+   - Molecular weight
+   - LogP
+   - Topological polar surface area (TPSA)
+   - Hydrogen-bond donors
+   - Hydrogen-bond acceptors
+   - Rotatable bonds
+5. Combined RDKit descriptors with selected COCONUT property fields.
+6. Saved cleaned output tables and figure files for reuse and downstream interpretation.
 
+## Key Results
 
+- Successfully parsed **2,000 / 2,000** sampled SMILES strings.
+- Built a descriptor-ready dataset for property-based profiling of natural products.
+- Generated visualizations showing molecular weight and LogP distributions across the subset.
+- Explored descriptor relationships using a correlation heatmap and MW vs LogP scatterplot.
 
-\## Methods
+## Drug Discovery Context
 
+This workflow demonstrates a foundational step in compound prioritization: translating chemical structure into interpretable physicochemical descriptors. Descriptor-based profiling can help identify compounds with properties that may influence permeability, solubility, flexibility, and overall drug-likeness during early-stage screening.
 
+## Repository Structure
 
-\- Loaded the COCONUT lite CSV and sampled 2,000 rows into a working subset. \[cite:23]\[web:36]  
+```text
+natural-products-db/
+├── coconut_natural_products_analysis.ipynb
+├── README.md
+└── data/
+    ├── processed/
+    │   ├── coconut_subset_cleaned.csv
+    │   └── descriptor_table.csv
+    └── results/
+        ├── molwt_hist.png
+        ├── logp_hist.png
+        ├── mw_vs_logp.png
+        └── descriptor_heatmap.png
+```
 
-\- Parsed the `canonical\_smiles` column into RDKit molecule objects; all 2,000 SMILES parsed successfully. \[cite:23]\[web:40]  
+## Visualizations
 
-\- Computed RDKit descriptors for each molecule:
+### Molecular Weight Distribution
+![Molecular weight distribution](data/results/molwt_hist.png)
 
-&#x20; - Molecular weight (MolWt\_rdkit)
+### LogP Distribution
+![LogP distribution](data/results/logp_hist.png)
 
-&#x20; - LogP (LogP\_rdkit)
+### MW vs LogP Scatterplot
+![MW vs LogP scatterplot](data/results/mw_vs_logp.png)
 
-&#x20; - Topological polar surface area (TPSA\_rdkit)
+### Descriptor Correlation Heatmap
+![Descriptor correlation heatmap](data/results/descriptor_heatmap.png)
 
-&#x20; - Hydrogen-bond donors (HDonors\_rdkit)
+## Technical Skills Demonstrated
 
-&#x20; - Hydrogen-bond acceptors (HAcceptors\_rdkit)
+- Cheminformatics data processing
+- SMILES parsing and molecule validation
+- Molecular descriptor calculation with RDKit
+- Scientific plotting and exploratory data analysis
+- Reproducible project organization
+- Interpretation of physicochemical properties in a medicinal chemistry context
 
-&#x20; - Rotatable bonds (RotBonds\_rdkit) \[web:40]  
+## Tools Used
 
-\- Combined RDKit descriptors with COCONUT’s existing property fields (e.g., `molecular\_weight`, `alogp`, `topological\_polar\_surface\_area`) into a cleaned descriptor table. \[web:36]\[web:38]\[web:40]  
+- Python
+- pandas
+- RDKit
+- matplotlib
+- seaborn
+- Jupyter Notebook
 
-\- Generated:
+## Future Directions
 
-&#x20; - Histograms of molecular weight and LogP
+Potential extensions of this project include:
 
-&#x20; - An MW vs LogP scatterplot
+- applying simple drug-likeness or lead-likeness filters,
+- comparing descriptor profiles across natural product classes,
+- analyzing scaffold diversity,
+- and integrating similarity search or clustering methods.
 
-&#x20; - A descriptor correlation heatmap \[web:40]
+## Portfolio Summary
 
-
-
-Key files:
-
-
-
-\- `data/processed/coconut\_subset\_cleaned.csv` – full 2,000-compound subset with RDKit descriptors. \[cite:23]  
-
-\- `data/processed/descriptor\_table.csv` – compact descriptor table for analysis. \[web:36]\[web:38]\[web:40]  
-
-\- `data/results/molwt\_hist.png`, `logp\_hist.png`, `mw\_vs\_logp.png`, `descriptor\_heatmap.png` – saved figures. \[cite:23]\[web:40]
-
-
-
-\## Results
-
-
-
-\- \*\*Parsing:\*\* 2,000/2,000 sampled SMILES converted to RDKit molecules with no failures. \[cite:23]\[web:40]  
-
-\- \*\*Property distributions:\*\* The subset spans a broad range of molecular weights and LogP values, with many molecules extending beyond classical “rule-of-five” space, consistent with known natural-product physicochemical properties. \[web:36]\[web:39]  
-
-\- \*\*Descriptor relationships:\*\* Correlations show expected trends, such as higher molecular weight associating with more hydrogen-bond acceptors/donors and rotatable bonds, and an inverse relationship between TPSA and LogP for more polar scaffolds. \[web:40]
-
-
-
-\## Tools
-
-
-
-\- Python (pandas, matplotlib, seaborn)  
-
-\- RDKit (installed via `conda-forge`) for SMILES parsing and descriptor calculation \[web:40]
-
+This project demonstrates an interest in natural product-based drug discovery and the use of computational chemistry tools to evaluate molecular properties relevant to medicinal chemistry.
