@@ -7,39 +7,39 @@
 
 # Natural Products Database Analysis
 
-A cheminformatics and data-analysis project using a curated subset of natural products from the COCONUT database. This workflow uses RDKit to parse molecular structures, compute medicinal-chemistry–relevant descriptors, and visualize chemical property distributions across a 2,000-compound natural-products dataset. [web:21][web:22]
+A cheminformatics and data-analysis project using a curated subset of natural products from the COCONUT database. This workflow uses RDKit to parse molecular structures, compute medicinal-chemistry–relevant descriptors, and visualize chemical property distributions across a 2,000-compound natural-products dataset. 
 
 ---
 
 ## Problem
 
-Natural products occupy a large, structurally diverse region of chemical space, but the raw structural data in large databases can be difficult to interpret without systematic profiling. [web:25][web:28]  
-For early-stage drug discovery, teams need to know whether a natural-products collection is enriched in compounds that are too large, too polar, too lipophilic, or too flexible before committing resources to screening or optimization. [web:25][web:28]  
+Natural products occupy a large, structurally diverse region of chemical space, but the raw structural data in large databases can be difficult to interpret without systematic profiling. 
+For early-stage drug discovery, teams need to know whether a natural-products collection is enriched in compounds that are too large, too polar, too lipophilic, or too flexible before committing resources to screening or optimization.   
 
 Without a reproducible way to compute and summarize key physicochemical descriptors (molecular weight, lipophilicity, polarity, hydrogen-bonding capacity, flexibility), it is hard to:
 - assess how “drug-like” a library is  
 - compare natural-product space to typical small-molecule libraries  
-- prioritize subsets for follow-up design or screening campaigns [web:25][web:28]
+- prioritize subsets for follow-up design or screening campaigns 
 
 ---
 
 ## Why This Project Is Important
 
-By turning a raw list of natural-product structures into quantitative descriptor distributions and visual summaries, this project helps answer a central question: *what kind of chemical space does this natural-products collection actually cover?* [web:25][web:28]  
-This type of profiling supports better decisions about library design, lead selection, and whether additional filtering or augmentation is needed to align with drug-discovery guidelines (for example, balancing molecular weight, LogP, and polar surface area). [web:26][web:28]  
+By turning a raw list of natural-product structures into quantitative descriptor distributions and visual summaries, this project helps answer a central question: *what kind of chemical space does this natural-products collection actually cover?  
+This type of profiling supports better decisions about library design, lead selection, and whether additional filtering or augmentation is needed to align with drug-discovery guidelines (for example, balancing molecular weight, LogP, and polar surface area).   
 
 The resulting workflow is useful as:
 - an exploratory analysis for natural-product libraries  
 - a starting point for building lead-like or fragment-like subsets  
-- a template for integrating descriptor profiling into larger computational pipelines [web:24][web:25]
+- a template for integrating descriptor profiling into larger computational pipelines 
 
 ---
 
 ## Executive Summary
 
-This project was designed to profile the physicochemical space of natural products using a reproducible Python workflow. A subset of 2,000 compounds was sampled from the COCONUT collection, successfully parsed with RDKit, and analyzed using descriptors relevant to molecular property profiling and early-stage drug discovery. [web:21][web:22]
+This project was designed to profile the physicochemical space of natural products using a reproducible Python workflow. A subset of 2,000 compounds was sampled from the COCONUT collection, successfully parsed with RDKit, and analyzed using descriptors relevant to molecular property profiling and early-stage drug discovery. 
 
-The project demonstrates practical skills in molecular data handling, cheminformatics, descriptor generation, and scientific visualization. It also provides a foundation for downstream workflows such as compound prioritization, clustering, similarity analysis, or lead-like subset selection. [web:24][web:25]
+The project demonstrates practical skills in molecular data handling, cheminformatics, descriptor generation, and scientific visualization. It also provides a foundation for downstream workflows such as compound prioritization, clustering, similarity analysis, or lead-like subset selection. 
 
 ---
 
@@ -55,18 +55,18 @@ The project demonstrates practical skills in molecular data handling, cheminform
 
 ## Scientific Context
 
-Natural products are a rich source of structurally diverse bioactive molecules and remain highly relevant to drug discovery and chemical-biology research. [web:25][web:28]  
-Compared with many synthetic libraries, natural products often occupy different regions of chemical space (for example, higher complexity, different heteroatom patterns), which can translate into novel biological activities but also distinct ADME and developability profiles. [web:25][web:28]
+Natural products are a rich source of structurally diverse bioactive molecules and remain highly relevant to drug discovery and chemical-biology research.   
+Compared with many synthetic libraries, natural products often occupy different regions of chemical space (for example, higher complexity, different heteroatom patterns), which can translate into novel biological activities but also distinct ADME and developability profiles. 
 
-Understanding how a natural-products set is distributed across key physicochemical properties—such as molecular weight, lipophilicity (LogP), polarity (TPSA), and hydrogen-bonding capacity—helps researchers judge whether the collection is suitable for particular screening strategies and where additional design or filtering might be needed. [web:26][web:28]
+Understanding how a natural-products set is distributed across key physicochemical properties—such as molecular weight, lipophilicity (LogP), polarity (TPSA), and hydrogen-bonding capacity—helps researchers judge whether the collection is suitable for particular screening strategies and where additional design or filtering might be needed. 
 
-This project focuses on property profiling rather than bioactivity prediction. By characterizing the descriptor space of a natural-products subset, the workflow supports later decisions about filtering, prioritization, and medicinal-chemistry relevance. [web:25]
+This project focuses on property profiling rather than bioactivity prediction. By characterizing the descriptor space of a natural-products subset, the workflow supports later decisions about filtering, prioritization, and medicinal-chemistry relevance. 
 
 ---
 
 ## Data Source
 
-The dataset used in this project was derived from the **COCONUT** database (Collection of Open Natural Products), an open resource for natural-product structures that aggregates and curates data from multiple sources. [web:21][web:22][web:24]  
+The dataset used in this project was derived from the **COCONUT** database (Collection of Open Natural Products), an open resource for natural-product structures that aggregates and curates data from multiple sources.   
 A 2,000-compound subset was sampled and used for descriptor analysis and visualization.
 
 ---
@@ -82,7 +82,7 @@ The workflow computed the following RDKit-derived properties:
 - Hydrogen bond acceptors  
 - Rotatable bonds  
 
-These descriptors were selected because they are commonly used to characterize physicochemical behavior, permeability, solubility, and molecular flexibility, all of which strongly influence drug-likeness and developability. [web:26][web:28]
+These descriptors were selected because they are commonly used to characterize physicochemical behavior, permeability, solubility, and molecular flexibility, all of which strongly influence drug-likeness and developability. 
 
 ---
 
@@ -153,7 +153,7 @@ natural-products-db/
 ## Limitations
 
 This project focuses on descriptor profiling and does not include biological activity data, experimental validation, or predictive modeling.  
-While descriptor analysis is useful for understanding chemical space, it should be interpreted as a first-step profiling approach rather than a direct measure of pharmacological potential. [web:25][web:28]
+While descriptor analysis is useful for understanding chemical space, it should be interpreted as a first-step profiling approach rather than a direct measure of pharmacological potential. 
 
 ---
 
@@ -165,7 +165,7 @@ Potential next steps include:
 - Clustering compounds by descriptor similarity  
 - Integrating structural fingerprints for scaffold or similarity analysis  
 - Adding similarity search functionality  
-- Combining descriptor profiling with downstream ADME or virtual screening workflows [web:25]
+- Combining descriptor profiling with downstream ADME or virtual screening workflows 
 
 ---
 
